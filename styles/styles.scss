@@ -5,6 +5,19 @@ $bg-beige: #F3F5F4;
 $white: #ffffff;
 $black: #18121E;
 
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'NEXT ART';
+    src: local('NEXT ART Bold'), local('NEXTART-Bold'), url('../font/Nextartsemibold.woff2') format('woff2'), url('../font/Nextartsemibold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
 @mixin display-setting($direction, $content, $items) {
     display: flex;
     flex-direction: $direction;
@@ -18,6 +31,9 @@ $black: #18121E;
     line-height: $height;
 }
 
+.wrapper {
+    @include display-setting(row, center, center);
+}
 
 body {
     margin: 0 auto;
@@ -26,12 +42,17 @@ body {
     @include font-setting(400, 16px, 24px);
 }
 header {
-    margin-top: 20px;
+    width: 100%;
+    margin-top: 70px;
     position: absolute;
+    align-self: center;
     &.container {
         padding: 0px 16px 0px;
         @include display-setting(row, space-between, center);
     }
+}
+nav {
+    display: none;  
 }
 footer {
     position: relative;
@@ -55,10 +76,6 @@ footer {
         }
         a {
             text-decoration: none;
-            &:hover {
-                cursor: pointer;
-                color: $color-dedicated;
-            }
         }
         li {
             &:not(:last-child) {
@@ -66,6 +83,7 @@ footer {
             }
             &:hover {
                 list-style: url(../images/list-customise-active.svg);
+                transition: 0.3s;
             }
         }
     }
@@ -78,12 +96,16 @@ button {
     border: none;
     font-weight: 700;
     align-self: center;
-}
-button:hover {
-    cursor: pointer;
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.03);
+        transition: 0.5s;
+    }
 }
 a:hover {
     cursor: pointer;
+    color: $color-dedicated;
+    transition: 0.5s;
 }
 h1, h2, h3, h4 {
     margin: 0;
@@ -91,6 +113,7 @@ h1, h2, h3, h4 {
 h1 {
     width: 80%;
     padding: 234px 0 32px 0;
+    font-family: 'NEXT ART';
     text-transform: uppercase;
     color: $main-light;
     @include font-setting(700, 28px, 42px);
@@ -107,10 +130,13 @@ h4 {
 }
 
 .container {
-    width: 358px;
+    width: 325px;
     padding: 78px 16px 50px;
     display: flex;
     flex-direction: column;
+}
+.consult-btn {
+    display: none;
 }
 .menu-btn {
     background-color: transparent;
@@ -127,7 +153,7 @@ h4 {
     color: $main-dark;
     background-color: $main-light;
 }
-.about-tibet {
+.about-tibet-item {
     @include display-setting(column, flex-start, center);
 }
 .about-tibet {
@@ -138,12 +164,19 @@ h4 {
 .plan-tibet-btn {
     margin-bottom: 40px;
 }
-.video-mock {
+.video-mock-item {
     width: 100%;
     height: 416px;
-    background-image: url(../images/video1.jpg);
-    background-size: cover;
+    border-radius: 24px;
+    background-size: 100% 100%;
     @include display-setting(row, center, center);
+    &.item1 {
+        background-image: url(../images/video1.jpg);
+    }
+    &.item2 {
+        display: none;
+        background-image: url(../images/video2.jpg);
+    }
 }
 .play-btn-mock {
     width: 50px;
@@ -181,9 +214,18 @@ h4 {
     height: 400px;
     margin: 32px 0;
     border-radius: 45px;
-    background-image: url(../images/direct-lake.jpg);
     background-size: 100% 100%;
     @include display-setting(column, space-between, center);
+    flex-wrap: wrap;
+    &.item-lake {
+        background-image: url(../images/direct-lake.jpg);
+    }
+    &.item-night {
+        display: none;
+    }
+    &.item-yoga {
+        display: none;
+    }
 }
 .direction-item-rate {
     margin-top: 37px;
@@ -302,4 +344,188 @@ h4 {
     bottom: 0;
     background-color: $black;
     @include display-setting(column, center, center);
+}
+
+@media (min-width: 390px) {
+    .container {
+        width: 358px;
+    }
+}
+@media (min-width: 1024px) {
+    body {
+        @include font-setting(400, 18px, 27px);
+    }
+    nav {
+        display: flex;
+        ul {
+            @include display-setting(row, center, center);
+            list-style: none;
+            list-style-position: inside;
+            :not(:last-child) {
+                margin-right: 24px;
+            }
+            a {
+                text-decoration: none;
+                color: $main-light;
+            }
+        }
+
+    }
+    h1 {
+        width: 100%;
+        font-size: 50px;
+        line-height: 75px;
+    }
+    h2 {
+        align-self: center;
+    }
+
+    .container {
+        width: 1000px;
+        padding: 108px 25px 100px;
+    }
+    .menu-btn {
+        display: none;
+    }
+    .consult-btn {
+        display: flex;
+        font-weight: 600;
+    }
+    .inro-form {
+        width: 100%;
+        height: max-content;
+        padding: 40px 43px;
+        border-radius: 10px;
+        background-color: rgba($white, 0.2);
+        @include display-setting(column, space-between, center);
+        .intro-tibet-btn {
+            margin-top: 24px;
+            align-self: flex-end;
+        }
+    }
+    form {
+        @include display-setting(row, space-between, center);
+        :not(:last-child) {
+            margin-right: 14px;
+        }
+        .inro-form-input {
+            width: 270px;
+            padding: 14px 32px;
+            color: $white;
+            background-color: transparent;
+            border-radius: 8px;
+            border: 1px solid $white;
+            @include font-setting(700, 16px, 24px);
+        }
+        span {
+            margin-top: 8px;
+            color: $main-light;
+            @include font-setting(400, 14px, 21px);
+        }
+    }
+    select {
+        box-sizing: border-box;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: transparent; 
+        background-image: url(../images/select.svg); 
+        background-repeat: no-repeat;
+        background-position: right 16px top 50%, 0 0;
+        background-size: 20px auto, 100%; 
+    }
+    .inro-form-item {
+        @include display-setting(column, space-between, flex-start);
+    }
+    .about-tibet {
+        .container {
+            @include display-setting(row-reverse, center, center);
+        }
+        .about-tibet-item {
+            width: 40%;
+            align-self: center;
+            button {
+                align-self: start;
+            }
+        }
+    }
+    .video-mock {
+        position: relative;
+        width: 60%;
+        @include display-setting(row, center, flex-start);
+    }
+    .video-mock-item {
+        width: 350px;
+        height: 400px;
+        &.item1 {
+            z-index: 111;
+            margin-top: 126px;
+        }
+        &.item2 {
+            position: absolute;
+            left: 0;
+            display: flex;
+            background-image: url(../images/video2.jpg);
+        }
+    }
+    .best-tibet-plans {
+        .container {
+            @include display-setting(row, space-between, flex-start);
+        }
+    }
+    .best-plans-info {
+        width: 45%;
+    }
+    .best-plans-pics {
+        width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .pics-item {
+        margin-bottom: 10px;
+        width: 250px;
+        height: 250px;
+        flex: 1 1 45%;
+        background-color: #F2BE22;
+        &.pic1 {
+            margin-right: 10px;
+            background-image: url(../images/programms1.jpg);
+            background-size: 100% 100%;
+            border-radius: 0 50px;
+        }
+        &.pic2 {
+            background-image: url(../images/programms2.jpg);
+            background-size: 100% 100%;
+            border-radius: 50px 0;
+        }
+        &.pic3 {
+            margin-right: 10px;
+            background-image: url(../images/programms3.jpg);
+            background-size: 100% 100%;
+            border-radius: 50px 0;
+        }
+        &.pic4 {
+            background-image: url(../images/programms4.jpg);
+            background-size: 100% 100%;
+            border-radius: 0 50px;
+        }
+    }
+    .tibet-directions {
+        @include display-setting(row, space-between, center);
+    }
+    .tibet-direction-item {
+        width: 32%;
+        &.item-lake {
+            background-image: url(../images/direct-lake.jpg);
+        }
+        &.item-night {
+            display: flex;
+            background-image: url(../images/direct-night.jpg);
+        }
+        &.item-yoga {
+            display: flex;
+            background-image: url(../images/direct-yoga.jpg);
+        }
+    }
+
 }

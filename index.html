@@ -12,77 +12,149 @@
 </head>
 <body>
 
-    <header class="container">
-        <img class="header-logo" src="./images/logo.svg" alt="logo">
-        <button class="menu-btn"><img src="./images/menu.svg" alt="menu"></button>
-    </header>
+    <div  class="wrapper">
+        <header class="container">
+            <img class="header-logo" src="./images/logo.svg" alt="logo">
+            <nav>
+                <ul>
+                    <li><a href="">Главная</a></li>
+                    <li><a href="">Про гида</a></li>
+                    <li><a href="">Программа тура</a></li>
+                    <li><a href="">Стоимость</a></li>
+                    <li><a href="">Блог</a></li>
+                    <li><a href="">Контакты</a></li>
+                </ul>
+            </nav>
+            <button class="consult-btn">Консультация</button>
+            <button class="menu-btn"><img src="./images/menu.svg" alt="menu"></button>
+        </header>
+    </div>
 
     <main>
         <section class="inro-tibet">
             <div class="container">
-                <h1>Насладись прогулкой в горы с командой единомышленников</h1>
-                <button class="intro-tibet-btn">Найти программу</button>
+                <h1>Насладись прогулкой в горах с командой единомышленников</h1>
+                <div class="inro-form">
+                    <form>
+                        <div class="inro-form-item">
+                            <select class="inro-form-input" name="" id="" >
+                                <option value="">Локация для тура</option>
+                            </select>
+                            <span>выберите из списка</span>
+                        </div>
+                        <div class="inro-form-item">
+                            <input class="inro-form-input" type="date" placeholder="Дата похода">
+                            <span>укажите диапазон</span>
+                        </div>
+                        <div class="inro-form-item">
+                            <select class="inro-form-input" name="" id="">
+                                <option value="">Участники</option>
+                            </select>
+                            <span>минимум 4 человека</span>
+                        </div>
+                    </form>
+                    <button class="intro-tibet-btn">Найти программу</button>
+                </div>
+                
             </div>
         </section>
 
         <section class="about-tibet">
             <div class="container">
-                <h2>Исследуйте все горные массивы мира вместе с нами</h2>
-                <p>Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. 
-                    Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, 
-                    "consectetur"и занялся его поисками в классической латинской литературе.
-                </p>
-                <button class="plan-tibet-btn">Программа тура</button>
+                <div class="about-tibet-item">
+                    <h2>Исследуйте все горные массивы мира вместе с нами</h2>
+                    <p>Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. 
+                        Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, 
+                        "consectetur"и занялся его поисками в классической латинской литературе.
+                    </p>
+                    <button class="plan-tibet-btn">Программа тура</button>
+                </div>
                 <div class="video-mock">
-                    <button class="play-btn-mock">
-                        <img src="./images/play-btn.svg" alt="play-btn">
-                    </button>
+                    <div class="video-mock-item item2"></div>
+                    <div class="video-mock-item item1">
+                        <button class="play-btn-mock">
+                            <img src="./images/play-btn.svg" alt="play-btn">
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="best-tibet-plans">
             <div class="container">
-                <h2>Лучшие программы для тебя</h2>
-                <p>Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.</p>
-                <div class="tibet-advantages">
-                    <div class="tibet-advantage-item">
-                        <img src="./images/guide.svg" alt="guide">
-                        <div>
-                            <h4>Опытный гид</h4>
-                            <p>Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.</p>
+                <div class="best-plans-info"> 
+                    <h2>Лучшие программы для тебя</h2>
+                    <p>Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.</p>
+                    <div class="tibet-advantages">
+                        <div class="tibet-advantage-item">
+                            <img src="./images/guide.svg" alt="guide">
+                            <div>
+                                <h4>Опытный гид</h4>
+                                <p>Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.</p>
+                            </div>
+                        </div>
+                        <div class="tibet-advantage-item">
+                            <img src="./images/safety.svg" alt="safety">
+                            <div>
+                                <h4>Безопасный поход</h4>
+                                <p>Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.</p>
+                            </div>
+                        </div>
+                        <div class="tibet-advantage-item">
+                            <img src="./images/prices.svg" alt="prices">
+                            <div>
+                                <h4>Лояльные цены</h4>
+                                <p>Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="tibet-advantage-item">
-                        <img src="./images/safety.svg" alt="safety">
-                        <div>
-                            <h4>Безопасный поход</h4>
-                            <p>Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.</p>
-                        </div>
-                    </div>
-                    <div class="tibet-advantage-item">
-                        <img src="./images/prices.svg" alt="prices">
-                        <div>
-                            <h4>Лояльные цены</h4>
-                            <p>Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.</p>
-                        </div>
-                    </div>
+                    <button class="tibet-cost-btn">Стоимость программ</button>
                 </div>
-                <button class="tibet-cost-btn">Стоимость программ</button>
+                <div class="best-plans-pics">
+                    <div class="pics-item pic1"></div>
+                    <div class="pics-item pic2"></div>
+                    <div class="pics-item pic3"></div>
+                    <div class="pics-item pic4"></div>
+                </div>
             </div>
         </section>
 
         <section class="tibet-directions">
             <div class="container">
                 <h2>Популярные направления</h2>
-                <div class="tibet-direction-item">
-                    <div class="direction-item-rate">
-                        <img src="./images/rate.svg" alt="rate star">
-                        4.9
+                <div class="tibet-directions">
+                    <div class="tibet-direction-item item-lake">
+                        <div class="direction-item-rate">
+                            <img src="./images/rate.svg" alt="rate star">
+                            4.9
+                        </div>
+                        <div class="direction-item-info">
+                            <span>Озеро возле гор</span>
+                            <div class="price-badge">480 $</div>
+                        </div>
+                        <!-- <span>романтическое приключение</span> -->
                     </div>
-                    <div class="direction-item-info">
-                        <span>Озеро возле гор</span>
-                        <div class="price-badge">480 $</div>
+                    <div class="tibet-direction-item item-night">
+                        <div class="direction-item-rate">
+                            <img src="./images/rate.svg" alt="rate star">
+                            4.5
+                        </div>
+                        <div class="direction-item-info">
+                            <span>Ночь в горах</span>
+                            <div class="price-badge">480 $</div>
+                        </div>
+                        <!-- <span>в компании друзей</span> -->
+                    </div>
+                    <div class="tibet-direction-item item-yoga">
+                        <div class="direction-item-rate">
+                            <img src="./images/rate.svg" alt="rate star">
+                            5.0
+                        </div>
+                        <div class="direction-item-info">
+                            <span>Йога в горах</span>
+                            <div class="price-badge">480 $</div>
+                        </div>
+                        <!-- <span>для тех, кто забоится о себе</span> -->
                     </div>
                 </div>
                 <button class="tibet-rate-btn">Рейтинг направлений</button>
