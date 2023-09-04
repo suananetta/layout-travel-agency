@@ -157,6 +157,7 @@ h4 {
     @include display-setting(column, flex-start, center);
 }
 .about-tibet {
+    @include display-setting(column, center, center);
     p {
         margin: 24px 0;
     }
@@ -339,8 +340,8 @@ h4 {
 .legal-info {
     position: absolute;
     width: 100%;
-    margin-top: -2px;
     padding: 20px 0;
+    margin-top: -2px;
     bottom: 0;
     background-color: $black;
     @include display-setting(column, center, center);
@@ -511,10 +512,13 @@ h4 {
         }
     }
     .tibet-directions {
-        @include display-setting(row, space-between, center);
+        @include display-setting(row, center, center);
     }
     .tibet-direction-item {
         width: 32%;
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
         &.item-lake {
             background-image: url(../images/direct-lake.jpg);
         }
@@ -526,6 +530,39 @@ h4 {
             display: flex;
             background-image: url(../images/direct-yoga.jpg);
         }
+    }
+    .impression-form {
+        width: 100%;
+        height: max-content;
+        margin-top: 100px;
+        padding: 40px 50px;
+        @include display-setting(row, space-between, flex-start);
+    }
+    .form-block {
+        width: 60%;
+        button {
+            align-self:last baseline;
+        }
+    }
+    .form-item {
+        align-self:last baseline;
+    }
+    footer {
+        position: relative;
+        @include display-setting(row, center, center);
+        p {
+            margin-bottom: 80px;
+        }
+        .container {
+            @include display-setting(row, space-between, flex-start);
+        }
+    }
+    .footer-info {
+        width: 35%;
+    }
+    .legal-info {
+        padding: 20px 25px;
+        @include display-setting(row, space-between, center);
     }
 
 }
