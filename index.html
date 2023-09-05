@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
     <link rel="stylesheet" href="./styles/styles.min.css"> 
+    <script src="script.js" defer></script>
     <title>Room Tibet</title>
 </head>
 <body>
@@ -122,7 +123,22 @@
         <section class="tibet-directions">
             <div class="container">
                 <h2>Популярные направления</h2>
-                <div class="tibet-directions">
+                <div class="direction-cards"></div>
+
+                <!-- <template id="direction-card">
+                    <div class="direction-item item-lake">
+                        <div class="direction-item rate">
+                            <img src="./images/rate.svg" alt="rate star">
+                            4.9
+                        </div>
+                        <div class="direction-item info">
+                            <span>Озеро возле гор</span>
+                            <div class="price-badge">480 $</div>
+                        </div>
+                        <span>романтическое приключение</span>
+                    </div>
+                </template> -->
+                <!-- <div class="tibet-directions">
                     <div class="tibet-direction-item item-lake">
                         <div class="direction-item-rate">
                             <img src="./images/rate.svg" alt="rate star">
@@ -132,7 +148,7 @@
                             <span>Озеро возле гор</span>
                             <div class="price-badge">480 $</div>
                         </div>
-                        <!-- <span>романтическое приключение</span> -->
+                        <span>романтическое приключение</span>
                     </div>
                     <div class="tibet-direction-item item-night">
                         <div class="direction-item-rate">
@@ -141,9 +157,9 @@
                         </div>
                         <div class="direction-item-info">
                             <span>Ночь в горах</span>
-                            <div class="price-badge">480 $</div>
+                            <div class="price-badge">500 $</div>
                         </div>
-                        <!-- <span>в компании друзей</span> -->
+                        <span>в компании друзей</span>
                     </div>
                     <div class="tibet-direction-item item-yoga">
                         <div class="direction-item-rate">
@@ -152,11 +168,11 @@
                         </div>
                         <div class="direction-item-info">
                             <span>Йога в горах</span>
-                            <div class="price-badge">480 $</div>
+                            <div class="price-badge">230 $</div>
                         </div>
-                        <!-- <span>для тех, кто забоится о себе</span> -->
+                        <span>для тех, кто забоится о себе</span>
                     </div>
-                </div>
+                </div> -->
                 <button class="tibet-rate-btn">Рейтинг направлений</button>
             </div>
         </section>
@@ -164,15 +180,8 @@
         <section class="travel-blog">
             <div class="container">
                 <h2>Блог о путешествиях</h2>
-                <div class="travel-blog-cart">
-                    <!-- <img src="./images/blog-italy.jpg" alt="blog-italy"> -->
-                    <h3>Красивая Италя, какая она в реальности?</h3>
-                    <p>Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.</p>
-                    <div class="blog-cart-footer">
-                        <span>01/04/2023</span>
-                        <a href="#">читать статью</a>
-                    </div>
-                </div>
+                <div class="blog-cards"></div>
+                
                 <button class="other-materials-btn">Другие материалы</button>
             </div>
         </section>
@@ -230,7 +239,6 @@
                 <li><a href="">Походы в джунглях Амазонии</a></li>
                 <li><a href="">Поездка в Африку</a></li>
             </ul>
-
             <ul class="travel-tips">
                 <h3>Важно для путешествий</h3>
                 <li><a href="">Как собрать в долгий поход?</a></li>
