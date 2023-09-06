@@ -141,28 +141,28 @@ h4 {
 .menu-btn {
     background-color: transparent;
 }
-.inro-tibet {
+.sec-introduction {
     height: max-content;
     background-image: url(../images/main-bg.png);
     background-size: cover;
     @include display-setting(column, flex-start, center);
 }
-.intro-tibet-btn {
+.intro-btn {
     padding: 16px 36px;
     align-self: start;
     color: $main-dark;
     background-color: $main-light;
 }
-.about-tibet-item {
-    @include display-setting(column, flex-start, center);
-}
-.about-tibet {
+.sec-about{
     @include display-setting(column, center, center);
     p {
         margin: 24px 0;
     }
 }
-.plan-tibet-btn {
+.about-item {
+    @include display-setting(column, flex-start, center);
+}
+.about-btn {
     margin-bottom: 40px;
 }
 .video-mock-item {
@@ -187,16 +187,14 @@ h4 {
     opacity: 0.6;
     @include display-setting(row, center, center);
 }
-.best-tibet-plans {
+.sec-best-plans {
     background-color: $bg-beige;
     @include display-setting(column, center, center);
-}
-.best-tibet-plans {
     p {
         margin: 32px 0;
     }
 }
-.tibet-advantage-item {
+.advantage-item {
     margin-bottom: 32px;
     @include display-setting(row, start, start);
     p {
@@ -207,12 +205,11 @@ h4 {
         margin-right: 16px;
     }
 }
-.tibet-directions {
+.sec-directions {
     @include display-setting(column, center, center);
 }
 .direction-cards {
-    // overflow-x: hidden;
-    // @include display-setting(row, space-between, center);
+    @include display-setting(row, space-between, center);
 }
 .direction-card {
     width: 100%;
@@ -220,7 +217,6 @@ h4 {
     margin: 32px 0;
     border-radius: 45px;
     background-size: 100% 100%;
-    transform: translateX(150%);
     display: none;
     &.active {
         @include display-setting(column, space-between, center);
@@ -229,15 +225,6 @@ h4 {
     }
     &:not(:last-child) {
         margin-right: 20px;
-    }
-    &.item0 {
-        background-image: url(../images/direct-lake.jpg);
-    }
-    &.item1 {
-        background-image: url(../images/direct-night.jpg);
-    }
-    &.item2 {
-        background-image: url(../images/direct-yoga.jpg);
     }
 }
 @keyframes ani {
@@ -278,22 +265,28 @@ h4 {
     background-color: $bg-beige;
     @include display-setting(column, center, center);
 }
-.travel-blog-cart {
+.blog-card {
     height: 496px;
     margin: 32px 0;
     padding: 16px;
     background-color: $main-light;
-    border-radius: 10px;
-    background-image: url(../images/blog-italy.jpg);
     background-size: 100% 55%;
     background-repeat: no-repeat;
-    @include display-setting(column, flex-end, center);
+    border-radius: 10px;
+    display: none;
+    &.active {
+        @include display-setting(column, flex-end, center);
+        flex-wrap: wrap;
+        animation: ani 2s forwards;
+    }
+    h3 {
+        align-self: start;
+    }
     p {
         @include font-setting(400, 14px, 20px);
     }
-
 }
-.blog-cart-footer {
+.blog-card-footer {
     width: 100%;
     @include display-setting(row, space-between, center);
     span {
@@ -306,20 +299,25 @@ h4 {
         @include font-setting(700, 14px, 20px);
     }
 }
-.tibet-impression {
+.sec-impression {
     @include display-setting(column, center, center);
+}
+.impression-pics {
+    @include display-setting(row, center, center);
 }
 .impression-img {
     width: 280px;
     height: 250px;
     margin: 32px 0;
-    background-image: url(../images/impression1.jpg);
-    background-size: cover;
-    align-self: center;
+    display: none;
+    &.active {
+        display: flex;
+        animation: ani 2s forwards;
+    }    
 }
 .impression-form {
-    width: 83%;
-    height: 291px;
+    width: 100%;
+    height: max-content;
     margin-top: 50px;
     padding: 50px 24px 24px;
     border-radius: 6px;
@@ -458,11 +456,11 @@ h4 {
     .inro-form-item {
         @include display-setting(column, space-between, flex-start);
     }
-    .about-tibet {
+    .sec-about {
         .container {
             @include display-setting(row-reverse, center, center);
         }
-        .about-tibet-item {
+        .about-item {
             width: 40%;
             align-self: center;
             button {
@@ -489,7 +487,7 @@ h4 {
             background-image: url(../images/video2.jpg);
         }
     }
-    .best-tibet-plans {
+    .sec-best-plans {
         .container {
             @include display-setting(row, space-between, flex-start);
         }
@@ -531,26 +529,10 @@ h4 {
             border-radius: 0 50px;
         }
     }
-    // .tibet-directions {
-    //     @include display-setting(row, center, center);
-    // }
-    // .tibet-direction-item {
-    //     width: 32%;
-    //     &:not(:last-child) {
-    //         margin-right: 20px;
-    //     }
-    //     &.item-lake {
-    //         background-image: url(../images/direct-lake.jpg);
-    //     }
-    //     &.item-night {
-    //         display: flex;
-    //         background-image: url(../images/direct-night.jpg);
-    //     }
-    //     &.item-yoga {
-    //         display: flex;
-    //         background-image: url(../images/direct-yoga.jpg);
-    //     }
-    // }
+    .direction-card {
+        width: 32%;
+        height: 400px;
+    }
     .impression-form {
         width: 100%;
         height: max-content;

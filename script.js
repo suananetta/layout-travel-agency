@@ -1,4 +1,4 @@
-let screenWidth = window.innerWidth;
+
 
 let directionCards = [
     {
@@ -26,24 +26,28 @@ let directionCards = [
 
 let blogCards = [
     {
+        url: './images/blog-italy.jpg',
         title: 'Красивая Италя, какая она в реальности?',
         body: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
         date: '01/04/2023',
         source: ''
     },
     {
+        url: './images/blog-flight.jpg',
         title: 'Долой сомнения! Весь мир открыт для вас!',
         body: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
         date: '01/04/2023',
         source: ''
     },
     {
+        url: './images/blog-preparation.jpg',
         title: 'Как подготовиться к путешествию в одиночку?',
         body: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
         date: '01/04/2023',
         source: ''
     },
     {
+        url: './images/blog-india.jpg',
         title: 'Индия ... летим?',
         body: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
         date: '01/04/2023',
@@ -51,18 +55,74 @@ let blogCards = [
     }
 ]
 
-// let template = document.getElementById('direction-card');
-// let content = template.content.querySelectorAll('.direction-item');
+let pics = [
+    {
+        url: './images/impression1.jpg',
+        alt: 'hot air balloon flight'
+    },
+    {
+        url: './images/impression2.jpg',
+        alt: 'map and camera'
+    },
+    {
+        url: './images/impression3.jpg',
+        alt: 'Burj Al Arab, Dubai'
+    },
+    {
+        url: './images/impression4.jpg',
+        alt: 'beach, boats near the shore'
+    },
+    {
+        url: './images/impression5.jpg',
+        alt: 'Horseshoe Canyon (Horseshoe Bend)'
+    },
+    {
+        url: './images/impression6.jpg',
+        alt: 'map and camera'
+    },
+]
+
+let deviceType;
+
+// window.addEventListener('load', resize);
+// window.addEventListener('resize',resize);
+
 let directionBlock = document.querySelector('.direction-cards');
 let blogBlock = document.querySelector('.blog-cards');
+let picsBlock = document.querySelector('.impression-pics');
 
+function resize() {
+    let screenWidth = window.innerWidth;
 
+    if(screenWidth >= 360 && screenWidth < 600) {
+        deviceType = 'mobile'
+    } else if(screenWidth >= 600 && screenWidth < 1024) {
+        deviceType = 'tablet'
+    } else if(screenWidth >= 1024) {
+        deviceType = 'desktop'
+    }
+    console.log(deviceType);
+}
+
+function onClickDisplay(content, contentSource) {
+    content.addEventListener('touchend', () => {
+        let currentCard = +content.querySelector('.active').dataset.index;
+        let nextCard = currentCard+1 >= contentSource.length? 0 : currentCard+1;
+
+        content.querySelector('.active').classList.remove('active');
+        content.querySelector('.item' + nextCard).classList.add('active');
+
+        console.log(currentCard);
+        console.log(nextCard);
+    })
+}
 
 function displayDirectionContent() {
-    directionCards.forEach((card, index) => {
+    directionCards.forEach((card, index) => {      
         let directionCard = document.createElement('div');
-        directionCard.className = `direction-card item${index} ${index === 0? 'active':''}`;
+        directionCard.className = `direction-card item${index} ${deviceType === 'desktop'? 'active' : index === 0? 'active':''}`;
         directionCard.setAttribute('data-index', `${index}`);
+        directionCard.style.backgroundImage = `url(${card.url})`;
 
         directionCard.innerHTML = ` 
             <div class="direction-card-rate">
@@ -81,43 +141,50 @@ function displayDirectionContent() {
         directionBlock.append(directionCard);
     })
 
-    directionBlock.addEventListener('touchend', () => {
-        let currentCard = +directionBlock.querySelector('.active').dataset.index;
-        let nextCard = currentCard+1 >= directionCards.length? 0 : currentCard+1;
-
-        directionBlock.querySelector('.active').classList.remove('active');
-        directionBlock.querySelector('.item' + nextCard).classList.add('active');
-        // sliderBlock.getAttribute()
-        // .classList.add('active');
-
-    // directionCard.classList.remove('active');
-    console.log(currentCard);
-    console.log(nextCard);
-    })
-    
+    onClickDisplay(directionBlock, directionCards);   
 }
 
 function displayBlogContent() {
-    blogBlock.forEach((card, index) => {
+    blogCards.forEach((card, index) => {
         let blogCard = document.createElement('div');
-        blogCard.className = `blog-card item${index} ${index === 0? 'active':''}`;
+        blogCard.className = `blog-card item${index} ${deviceType === 'desktop'? 'active' : index === 0? 'active':''}`;
         blogCard.setAttribute('data-index', `${index}`);
+        blogCard.style.backgroundImage = `url(${card.url})`
 
         blogCard.innerHTML = ` 
-            <img src=${card.url} alt="blog-italy">
-            <h3>Красивая Италя, какая она в реальности?</h3>
-            <p>Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.</p>
-            <div class="blog-cart-footer">
-                <span>01/04/2023</span>
-                <a href="#">читать статью</a>
+            
+            <h3>${card.title}</h3>
+            <p>${card.body}</p>
+            <div class="blog-card-footer">
+                <span>${card.date}</span>
+                <a href="${card.source}">читать статью</a>
             </div>
         `
-        directionBlock.append(blogCard);
+        blogBlock.append(blogCard);
     })
+
+    onClickDisplay(blogBlock, blogCards);
+}
+
+function displayPicsContent() {
+    pics.forEach((pic, index) => {
+        let image = document.createElement('img');
+        image.className = `impression-img item${index} ${deviceType === 'desktop'? 'active' : index === 0? 'active':''}`;
+        image.setAttribute('data-index', `${index}`);
+
+        image.src = pic.url;
+        image.alt = pic.alt
+
+        picsBlock.append(image);
+    })
+
+    onClickDisplay(picsBlock, pics);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    resize();
     displayDirectionContent();
-    console.log();
+    displayBlogContent();
+    displayPicsContent();
 });
 
