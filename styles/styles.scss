@@ -147,6 +147,11 @@ h4 {
     background-size: cover;
     @include display-setting(column, flex-start, center);
 }
+.inro-form {
+    form {
+        display: none;
+    }
+}
 .intro-btn {
     padding: 16px 36px;
     align-self: start;
@@ -268,16 +273,18 @@ h4 {
 .blog-card {
     height: 496px;
     margin: 32px 0;
-    padding: 16px;
     background-color: $main-light;
-    background-size: 100% 55%;
-    background-repeat: no-repeat;
     border-radius: 10px;
     display: none;
     &.active {
-        @include display-setting(column, flex-end, center);
+        @include display-setting(column, flex-start, center);
         flex-wrap: wrap;
         animation: ani 2s forwards;
+    }
+    img {
+        width: 100%;
+        height: 50%;
+        border-radius: 10px 10px 0 0;
     }
     h3 {
         align-self: start;
@@ -285,6 +292,9 @@ h4 {
     p {
         @include font-setting(400, 14px, 20px);
     }
+}
+.blog-card-body {
+    padding: 16px;
 }
 .blog-card-footer {
     width: 100%;
@@ -417,10 +427,13 @@ h4 {
         border-radius: 10px;
         background-color: rgba($white, 0.2);
         @include display-setting(column, space-between, center);
-        .intro-tibet-btn {
-            margin-top: 24px;
-            align-self: flex-end;
+        form {
+            display: flex;
         }
+    }
+    .intro-btn {
+        margin-top: 24px;
+        align-self: flex-end;
     }
     form {
         @include display-setting(row, space-between, center);
@@ -533,12 +546,53 @@ h4 {
         width: 32%;
         height: 400px;
     }
+    .blog-cards {
+        margin: 30px 0;
+        @include display-setting(row, space-between, center);
+        flex-wrap: wrap;
+    }
+    .blog-card {
+        height: 312px;
+        flex: 1 0 45%;
+        margin: 10px;
+        padding: 16px;
+        img {
+            width: 45%;
+            height: 100%;
+            border-radius: 10px;
+        }
+    }
+    .blog-card-body {
+        width: 53%;
+        height: 312px;
+        padding: 16px;
+        @include display-setting(column, space-between, center);
+    }
+    .impression-pics {
+        flex-wrap: wrap;
+        img {
+            margin: 10px;
+            &:first-child {
+                width: 50%;
+            }
+            &:nth-child(4) {
+                width: 50%;
+            }
+            &:nth-child(5) {
+                width: 50%;
+            }
+        }
+        
+    }
     .impression-form {
         width: 100%;
         height: max-content;
         margin-top: 100px;
         padding: 40px 50px;
         @include display-setting(row, space-between, flex-start);
+        form {
+            justify-content: flex-start;
+        }
     }
     .form-block {
         width: 60%;
@@ -567,4 +621,48 @@ h4 {
         @include display-setting(row, space-between, center);
     }
 
+}
+
+@media (min-width: 1440px) {
+    header {
+        &.container {
+            padding: 50px;
+            @include display-setting(row, space-between, center);
+        }
+    }
+    h1 {
+        width: 69%;
+    }
+
+    .container {
+        width: 1440px;
+        padding: 108px 50px 100px;
+    }
+
+    .inro-form {
+        @include display-setting(row, space-between, center);
+    }
+    .intro-btn {
+        margin-top: 0px;
+        align-self: flex-start;
+    }
+    .direction-card {
+        height: 500px;
+    }
+    .impression-pics {
+        margin: 32px 0;
+        img {
+            margin: 10px;
+            &:first-child {
+                width: 50%;
+            }
+            &:nth-child(4) {
+                width: 20%;
+            }
+            &:nth-child(5) {
+                width: 50%;
+            }
+        }
+        
+    }
 }

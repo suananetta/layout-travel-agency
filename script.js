@@ -141,7 +141,7 @@ function displayDirectionContent() {
         directionBlock.append(directionCard);
     })
 
-    onClickDisplay(directionBlock, directionCards);   
+    deviceType === 'desktop'? '' : onClickDisplay(directionBlock, directionCards);   
 }
 
 function displayBlogContent() {
@@ -149,21 +149,23 @@ function displayBlogContent() {
         let blogCard = document.createElement('div');
         blogCard.className = `blog-card item${index} ${deviceType === 'desktop'? 'active' : index === 0? 'active':''}`;
         blogCard.setAttribute('data-index', `${index}`);
-        blogCard.style.backgroundImage = `url(${card.url})`
+        // blogCard.style.backgroundImage = `url(${card.url})`
 
         blogCard.innerHTML = ` 
-            
-            <h3>${card.title}</h3>
-            <p>${card.body}</p>
-            <div class="blog-card-footer">
-                <span>${card.date}</span>
-                <a href="${card.source}">читать статью</a>
+            <img src='${card.url}' alt='${card.title}'>
+            <div class="blog-card-body">
+                <h3>${card.title}</h3>
+                <p>${card.body}</p>
+                <div class="blog-card-footer">
+                    <span>${card.date}</span>
+                    <a href="${card.source}">читать статью</a>
+                </div>
             </div>
         `
         blogBlock.append(blogCard);
     })
 
-    onClickDisplay(blogBlock, blogCards);
+    deviceType === 'desktop'? '' : onClickDisplay(blogBlock, blogCards);
 }
 
 function displayPicsContent() {
@@ -178,7 +180,7 @@ function displayPicsContent() {
         picsBlock.append(image);
     })
 
-    onClickDisplay(picsBlock, pics);
+    deviceType === 'desktop'? '' : onClickDisplay(picsBlock, pics);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
