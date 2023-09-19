@@ -83,13 +83,19 @@ let pics = [
 ]
 
 let deviceType;
+let openedMobileMenu = false;
 
-// window.addEventListener('load', resize);
-// window.addEventListener('resize',resize);
+let dateInput = document.querySelector('input.intro-form-input');
 
 let directionBlock = document.querySelector('.direction-cards');
 let blogBlock = document.querySelector('.blog-cards');
 let picsBlock = document.querySelector('.impression-pics');
+
+let imprTitle = document.querySelector('.impression-title');
+
+let mobileMenu = document.querySelector('.mobile-menu');
+let openMenuBtn = document.querySelector('.menu-btn');
+let closeMenuBtn = document.querySelector('.close-menu');
 
 function resize() {
     let screenWidth = window.innerWidth;
@@ -101,7 +107,6 @@ function resize() {
     } else if(screenWidth >= 1024) {
         deviceType = 'desktop'
     }
-    console.log(deviceType);
 }
 
 function onClickDisplay(content, contentSource) {
@@ -111,9 +116,6 @@ function onClickDisplay(content, contentSource) {
 
         content.querySelector('.active').classList.remove('active');
         content.querySelector('.item' + nextCard).classList.add('active');
-
-        console.log(currentCard);
-        console.log(nextCard);
     })
 }
 
@@ -135,8 +137,7 @@ function displayDirectionContent() {
                     <span>${card.mark}</span>
                 </div>
                 <div class="price-badge">${card.price}</div>
-            </div>
-            
+            </div>            
         `
         directionBlock.append(directionCard);
     })
@@ -149,7 +150,6 @@ function displayBlogContent() {
         let blogCard = document.createElement('div');
         blogCard.className = `blog-card item${index} ${deviceType === 'desktop'? 'active' : index === 0? 'active':''}`;
         blogCard.setAttribute('data-index', `${index}`);
-        // blogCard.style.backgroundImage = `url(${card.url})`
 
         blogCard.innerHTML = ` 
             <img src='${card.url}' alt='${card.title}'>
@@ -183,10 +183,46 @@ function displayPicsContent() {
     deviceType === 'desktop'? '' : onClickDisplay(picsBlock, pics);
 }
 
+function displayTitle () {
+    if(deviceType === 'desktop') {
+        imprTitle.textContent = 'Получайте полезные рассылки о путешествиях';
+    } else {
+        imprTitle.textContent = 'Делимся впечатлениями';
+    }    
+}
+
+function displayMobileMenu () {
+    if(openedMobileMenu) {
+        mobileMenu.style.display = 'flex';
+    } else {
+        mobileMenu.style.display = 'none';
+    }
+}
+
+function changeMenuVisability (e) {
+    openedMobileMenu = !openedMobileMenu;
+    displayMobileMenu();
+}
+
+function changeTypeToDate (e) {
+    e.target.type = 'date';
+}
+
+function changeTypeToText (e) {
+    e.target.type = 'text';
+}
+
+dateInput.addEventListener('focus', changeTypeToDate);
+dateInput.addEventListener('blur', changeTypeToText);
+
+openMenuBtn.addEventListener('click', changeMenuVisability);
+closeMenuBtn.addEventListener('click', changeMenuVisability);
+
 document.addEventListener('DOMContentLoaded', () => {
     resize();
     displayDirectionContent();
     displayBlogContent();
     displayPicsContent();
+    displayTitle();
 });
 

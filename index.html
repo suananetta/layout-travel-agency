@@ -12,7 +12,16 @@
     <title>Room Tibet</title>
 </head>
 <body>
-
+    <div class="mobile-menu dark-menu">
+        <button class="close-menu"><img src="./images/close_icon.svg" alt="close menu"></button>
+        <ul class="">
+            <li><a href="">Про гида</a></li>
+            <li><a href="">Программа тура</a></li>
+            <li><a href="">Стоимость</a></li>
+            <li><a href="">Блог</a></li>
+            <li><a href="">Контакты</a></li>
+        </ul>
+    </div>
     <div  class="wrapper">
         <header class="container">
             <img class="header-logo" src="./images/logo.svg" alt="logo">
@@ -27,7 +36,7 @@
                 </ul>
             </nav>
             <button class="consult-btn">Консультация</button>
-            <button class="menu-btn"><img src="./images/menu.svg" alt="menu"></button>
+            <button class="menu-btn"><img src="./images/menu.svg" alt="menu"></button>  
         </header>
     </div>
 
@@ -35,20 +44,20 @@
         <section class="sec-introduction">
             <div class="container">
                 <h1>Насладись прогулкой в горах с командой единомышленников</h1>
-                <div class="inro-form">
+                <div class="intro-form">
                     <form>
-                        <div class="inro-form-item">
-                            <select class="inro-form-input" name="" id="" >
+                        <div class="intro-form-item">
+                            <select class="intro-form-input" name="" id="" >
                                 <option value="">Локация для тура</option>
                             </select>
                             <span>выберите из списка</span>
                         </div>
-                        <div class="inro-form-item">
-                            <input class="inro-form-input" type="date" placeholder="Дата похода">
-                            <span>укажите диапазон</span>
+                        <div class="intro-form-item">
+                            <input class="intro-form-input" type="text" placeholder="Дата похода">
+                            <span>укажите дату</span>
                         </div>
-                        <div class="inro-form-item">
-                            <select class="inro-form-input" name="" id="">
+                        <div class="intro-form-item">
+                            <select class="intro-form-input" name="" id="">
                                 <option value="">Участники</option>
                             </select>
                             <span>минимум 4 человека</span>
@@ -143,7 +152,7 @@
                 <button class="pinterest-btn">Наш pinterest</button>
 
                 <div class="impression-form">
-                    <h2>Делимся впечатлениями</h2>
+                    <h2 class="impression-title"></h2>
                     <div class="form-block">
                         <form>
                             <div class="form-item">
@@ -161,7 +170,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="dark-menu">
         <div class="container">
             <div class="footer-info">
                 <h3>Компания «РумТибет»</h3>

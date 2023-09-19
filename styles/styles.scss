@@ -37,6 +37,7 @@ $black: #18121E;
 
 body {
     margin: 0 auto;
+    overflow-x: hidden;
     width: 100%;
     font-family: 'Nunito Sans', sans-serif, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     @include font-setting(400, 16px, 24px);
@@ -47,7 +48,7 @@ header {
     position: absolute;
     align-self: center;
     &.container {
-        padding: 0px 16px 0px;
+        padding: 0;
         @include display-setting(row, space-between, center);
     }
 }
@@ -62,31 +63,7 @@ footer {
     p {
         @include font-setting(400, 14px, 20px); 
     }
-    a {
-        color: $main-light;
-        @include font-setting(400, 14px, 20px); 
-    }
-    ul {
-        margin-bottom: 50px;
-        padding: 0;
-        list-style: url(../images/list-customise.svg);
-        list-style-position: inside;
-        h3 {
-            margin-bottom: 20px;
-        }
-        a {
-            text-decoration: none;
-        }
-        li {
-            &:not(:last-child) {
-                margin-bottom: 16px;
-            }
-            &:hover {
-                list-style: url(../images/list-customise-active.svg);
-                transition: 0.3s;
-            }
-        }
-    }
+    
 }
 button {
     padding: 12px 24px;
@@ -119,8 +96,8 @@ h1 {
     @include font-setting(700, 28px, 42px);
 }
 h2 {
-    color: $main-dark;
-    @include font-setting(800, 24px, 28.8px);
+    color: $black;
+    @include font-setting(800, 24px, 28px);
 }
 h3 {
     @include font-setting(700, 20px, 26px);
@@ -131,7 +108,7 @@ h4 {
 
 .container {
     width: 325px;
-    padding: 78px 16px 50px;
+    padding: 78px 0px 50px;
     display: flex;
     flex-direction: column;
 }
@@ -147,7 +124,7 @@ h4 {
     background-size: cover;
     @include display-setting(column, flex-start, center);
 }
-.inro-form {
+.intro-form {
     form {
         display: none;
     }
@@ -197,6 +174,12 @@ h4 {
     @include display-setting(column, center, center);
     p {
         margin: 32px 0;
+    }
+}
+.best-plans-info {
+    @include display-setting(column, center, center);
+    button {
+        align-self: center;
     }
 }
 .advantage-item {
@@ -331,9 +314,11 @@ h4 {
     margin-top: 50px;
     padding: 50px 24px 24px;
     border-radius: 6px;
+    background-color: $white;
     box-shadow: 0px 0px 15px 0px rgba(24, 18, 30, 0.12);
     @include display-setting(column, space-between, flex-start);
     span {
+        padding-top: 24px;
         @include font-setting(600, 14px, 18px);
     }
     a {
@@ -348,10 +333,14 @@ h4 {
         padding: 12px 16px;
         border: none;
         background-color: $bg-beige;
-        @include font-setting(300, 14px, 20px);
+        &::placeholder {
+            color: $black;
+            @include font-setting(300, 14px, 20px);
+        }
     }
 }
 .form-item {
+    margin-top: 18px;
     @include font-setting(600, 16px, 20px);
 }
 .contacts {
@@ -374,10 +363,64 @@ h4 {
     background-color: $black;
     @include display-setting(column, center, center);
 }
+.dark-menu {
+    a {
+        color: $main-light;
+        @include font-setting(400, 14px, 20px); 
+    }
+    ul {
+        margin-bottom: 50px;
+        padding: 0;
+        list-style: url(../images/list-customise.svg);
+        list-style-position: inside;
+        h3 {
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
+            &:hover {
+                color: $color-dedicated;
+            }
+        }
+        li {
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
+            &:hover {
+                list-style: url(../images/list-customise-active.svg);
+                transition: 0.3s;
+            }
+        }
+    }
+}
+.mobile-menu {
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+    background-color: $main-dark;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    button {
+        margin: 16px;
+        align-self: flex-end;
+    }
+    ul {
+        padding: 26px;
+        align-self: start;
+    }
+}
 
 @media (min-width: 390px) {
     .container {
         width: 358px;
+    }
+}
+@media (min-width: 600px) {
+    h1 {
+        width: 90%;
     }
 }
 @media (min-width: 1024px) {
@@ -408,7 +451,7 @@ h4 {
     h2 {
         align-self: center;
     }
-
+        
     .container {
         width: 1000px;
         padding: 108px 25px 100px;
@@ -420,7 +463,7 @@ h4 {
         display: flex;
         font-weight: 600;
     }
-    .inro-form {
+    .intro-form {
         width: 100%;
         height: max-content;
         padding: 40px 43px;
@@ -430,35 +473,54 @@ h4 {
         form {
             display: flex;
         }
+        input[type=date]::-webkit-calendar-picker-indicator{
+            opacity: 0;
+            padding: 0 45px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        input[type=date]{
+            background: url('../images/select-date.svg') #f7f9fc no-repeat 90% 50%;
+        }
+        form {
+            @include display-setting(row, space-between, center);
+            :not(:last-child) {
+                margin-right: 14px;
+            }
+            .intro-form-input {
+                width: 270px;
+                padding: 14px 24px;
+                color: $white;
+                background-color: transparent;
+                border-radius: 8px;
+                border: 1px solid $white;
+                @include font-setting(700, 16px, 24px);
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            input {
+                &::placeholder {
+                    color: $white;
+                }
+                background: url('../images/select-date.svg') #f7f9fc no-repeat 90% 50%;
+            }
+            span {
+                margin-top: 8px;
+                color: $main-light;
+                @include font-setting(400, 14px, 21px);
+            }
+        }
     }
     .intro-btn {
         margin-top: 24px;
         align-self: flex-end;
     }
-    form {
-        @include display-setting(row, space-between, center);
-        :not(:last-child) {
-            margin-right: 14px;
-        }
-        .inro-form-input {
-            width: 270px;
-            padding: 14px 32px;
-            color: $white;
-            background-color: transparent;
-            border-radius: 8px;
-            border: 1px solid $white;
-            @include font-setting(700, 16px, 24px);
-        }
-        span {
-            margin-top: 8px;
-            color: $main-light;
-            @include font-setting(400, 14px, 21px);
-        }
-    }
     select {
         box-sizing: border-box;
-        -moz-appearance: none;
-        -webkit-appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
         appearance: none;
         background-color: transparent; 
         background-image: url(../images/select.svg); 
@@ -466,7 +528,7 @@ h4 {
         background-position: right 16px top 50%, 0 0;
         background-size: 20px auto, 100%; 
     }
-    .inro-form-item {
+    .intro-form-item {
         @include display-setting(column, space-between, flex-start);
     }
     .sec-about {
@@ -546,6 +608,11 @@ h4 {
         width: 32%;
         height: 400px;
     }
+    .direction-card-info {
+        span {
+            display: flex;
+        }
+    }
     .blog-cards {
         margin: 30px 0;
         @include display-setting(row, space-between, center);
@@ -568,6 +635,11 @@ h4 {
         padding: 16px;
         @include display-setting(column, space-between, center);
     }
+    .price-badge {
+        width: 25%;
+        margin-left: 12px;
+        padding: 6px;
+    }
     .impression-pics {
         flex-wrap: wrap;
         img {
@@ -582,34 +654,41 @@ h4 {
                 width: 50%;
             }
         }
-        
+    }
+    .impression-title {
+        width: 45%;
     }
     .impression-form {
+        z-index: 999;
+        margin-bottom: -220px;
         width: 100%;
         height: max-content;
         margin-top: 100px;
         padding: 40px 50px;
         @include display-setting(row, space-between, flex-start);
-        form {
-            justify-content: flex-start;
-        }
     }
     .form-block {
-        width: 60%;
+        width: 65%;
+        form {
+            @include display-setting(row, flex-start, flex-start);
+        }
         button {
             align-self:last baseline;
+            margin-left: 16px;
         }
     }
     .form-item {
         align-self:last baseline;
     }
     footer {
+        padding-top: 220px;
         position: relative;
         @include display-setting(row, center, center);
         p {
             margin-bottom: 80px;
         }
         .container {
+            padding-top: 0;
             @include display-setting(row, space-between, flex-start);
         }
     }
@@ -620,7 +699,6 @@ h4 {
         padding: 20px 25px;
         @include display-setting(row, space-between, center);
     }
-
 }
 
 @media (min-width: 1440px) {
@@ -638,8 +716,7 @@ h4 {
         width: 1440px;
         padding: 108px 50px 100px;
     }
-
-    .inro-form {
+    .intro-form {
         @include display-setting(row, space-between, center);
     }
     .intro-btn {
@@ -648,6 +725,11 @@ h4 {
     }
     .direction-card {
         height: 500px;
+    }
+    .price-badge {
+        width: 20%;
+        margin-left: 24px;
+        padding: 6px 12px;
     }
     .impression-pics {
         margin: 32px 0;
@@ -662,7 +744,9 @@ h4 {
             &:nth-child(5) {
                 width: 50%;
             }
-        }
-        
+        }  
+    }
+    .impression-title {
+        width: 30%;
     }
 }
